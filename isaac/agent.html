@@ -1,0 +1,233 @@
+<div class="m-0 p-0 w-100">
+    <div class="row w-100" style="font-weight: 900">
+        <div class="col">
+            <h5>Agent Manage</h5>
+        </div>
+        <div class="col text-right" style="color: #064d3b">
+            <div class="d-flex justify-content-end align-items-center">
+                <i class="lni lni-spinner-arrow ml-2" style="font-weight: bold;"></i>
+                <p style="margin:0 0 0 10px">Reload Page</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-4 p-0 w-100 bloco">
+    <div class="row p-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="m-0 flex-grow-1" id="allAgents" style="width: 100px">All Agents: (0)</p>
+            <button class="btnCreate" data-bs-toggle="modal" data-bs-target="#createAgentModal"><i class="lni lni-plus"></i>Create</button>
+        </div>
+        <hr class="mt-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center p-0">
+            <div class="btnsEstado d-flex">
+              <button class="btnEstado">Expand All</button>
+              <button class="btnEstado">Collapse All</button>
+            </div>
+            <div class="searchItem">
+              <input type="text" id="buscaItem" placeholder="Search...">
+            </div>
+        </div>
+        <div class="table-responsive p-0 mt-4">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Agent Code</th>
+                  <th>Agent Name</th>
+                  <th>Agent Memo</th>
+                  <th>Type</th>
+                  <th>API Type</th>
+                  <th>Balance</th>
+                  <th>Percent</th>
+                  <th>Sub Agent Sum</th>
+                  <th>Sub User Sum</th>
+                  <th>Created Date</th>
+                  <th>Account Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="contentTableBodyAgent">
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="updateAgentModal" tabindex="-1" aria-labelledby="updateAgentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateAgentModalLabel">Agent Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="parentAgent" class="form-label">Parent Agent</label>
+                        <input type="text" class="form-control" id="parentAgent">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="agentNameInput" class="form-label">Agent Name</label>
+                        <input type="text" class="form-control" id="agentNameInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="agentCodeInput" class="form-label">Agent Code</label>
+                        <input type="text" class="form-control" id="agentCodeInput">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="passwordInput" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="passwordInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="agentTokenInput" class="form-label">Agent Token</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="agentTokenInput">
+                            <button class="btn btn-outline-secondary copy-btn" type="button" data-target="agentTokenInput" style="background-color: #064d3b; color:white;">Copy</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="agentSecretKeyInput" class="form-label">Agent Secret Key</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="agentSecretKeyInput">
+                            <button class="btn btn-outline-secondary copy-btn" type="button" data-target="agentSecretKeyInput" style="background-color: #064d3b; color:white;">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="percentInput" class="form-label">Percent (%)</label>
+                        <input type="text" class="form-control" id="percentInput">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="memoInput" class="form-label">Memo</label>
+                        <input type="text" class="form-control" id="memoInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="agentTypeSelect" class="form-label">Agent Type</label>
+                        <select class="form-select" id="agentTypeSelect">
+                            <option value="type1">Type 1</option>
+                            <option value="type2">Type 2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apiTypeSelect" class="form-label">API Type</label>
+                        <select class="form-select" id="apiTypeSelect">
+                            <option value="api1">API 1</option>
+                            <option value="api2">API 2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="siteEndpointInput" class="form-label">Site EndPoint</label>
+                        <input type="text" class="form-control" id="siteEndpointInput">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn" style="background-color: #064d3b;color: white;" id="updateAgentButton">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="createAgentModal" tabindex="-1" aria-labelledby="createAgentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createAgentModalLabel">Create New Agent</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="createParentAgent" class="form-label">Parent Agent</label>
+                        <select class="form-select" id="createParentAgent">
+                            <option value="Parent 1">Parent 1</option>
+                            <option value="Parent 2">Parent 2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="createAgentNameInput" class="form-label">Agent Name</label>
+                        <input type="text" class="form-control" id="createAgentNameInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="createAgentCodeInput" class="form-label">Agent Code</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="createAgentCodeInput" >
+                            <button class="btn btn-outline-secondary" type="button" data-target="createAgentCodeInput" style="background-color: #064d3b; color:white;">Check</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="createPasswordInput" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="createPasswordInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="createPercentInput" class="form-label">Percent (%)</label>
+                        <input type="text" class="form-control" id="createPercentInput">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="createMemoInput" class="form-label">Memo</label>
+                        <input type="text" class="form-control" id="createMemoInput">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="createAgentTypeSelect" class="form-label">Agent Type</label>
+                        <select class="form-select" id="createAgentTypeSelect">
+                            <option value="type1">Type 1</option>
+                            <option value="type2">Type 2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="createApiTypeSelect" class="form-label">API Type</label>
+                        <select class="form-select" id="createApiTypeSelect">
+                            <option value="api1">API 1</option>
+                            <option value="api2">API 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn" style="background-color: #064d3b;color: white;" id="createAgentButton">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewAgentModal" tabindex="-1" aria-labelledby="viewAgentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewAgentModalLabel">Agent Exchange</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="viewBalanceInput" class="form-label">Balance</label>
+                    <input type="text" class="form-control" id="viewBalanceInput" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="viewTypeInput" class="form-label">Type</label>
+                    <select class="form-select" id="viewTypeInput">
+                        <option value="deposit" selected>Deposit</option>
+                        <option value="money">Money</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn" id="confirmViewButton" style="background-color: #064d3b;color: white;">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

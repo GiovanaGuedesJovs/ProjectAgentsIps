@@ -1,0 +1,75 @@
+<div class="m-0 p-0 w-100">
+    <div class="row w-100" style="font-weight: 900">
+        <div class="col">
+            <h5>IP Whitelist</h5>
+        </div>
+        <div class="col text-right" style="color: #064d3b">
+            <div class="d-flex justify-content-end align-items-center">
+                <i class="lni lni-spinner-arrow ml-2" style="font-weight: bold;"></i>
+                <p style="margin:0 0 0 10px">Reload Page</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-4 p-0 w-100 bloco">
+    <div class="row p-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="m-0 flex-grow-1" id="allIps" style="width: 100px">All IP Whitelist: (0)</p>
+            <button class="btnCreate" data-bs-toggle="modal" data-bs-target="#createIpModal"><i class="lni lni-plus"></i>Create</button>
+        </div>
+        <hr class="mt-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center p-0">
+            <div class="btnsEstado d-flex">
+              <button class="btnEstado">Expand All</button>
+              <button class="btnEstado">Collapse All</button>
+            </div>
+            <div class="searchItem">
+              <input type="text" id="buscaItem" placeholder="Search...">
+            </div>
+        </div>        
+        <div class="table-responsive p-0 mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>IP Address</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="contentTableBodyIp">
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="m-0 flex-grow-1" style="width: 100px" id="showingPages">Showing 1 to 1 of 1 entries</p>
+            <div class="pagination-container">
+                <button id="prevPage">Prev</button>
+                <span id="pageNumber"></span>
+                <button id="nextPage">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="createIpModal" tabindex="-1" aria-labelledby="createIpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createIpModalLabel">Create New Ip</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="createPasswordInput" class="form-label">IP Adress</label>
+                        <input type="text" class="form-control" id="createIpAddress" placeholder="Digite o endereço IP">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn" style="background-color: #064d3b;color: white;" id="createIpButton">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
